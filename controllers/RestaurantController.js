@@ -1,5 +1,6 @@
 const models = require("../models");
 const Restaurant = models.restaurant;
+const Product = models.product;
 const verify = require('../jwt/verify');
 
 exports.create = (req, res, next) => {
