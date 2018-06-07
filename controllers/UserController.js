@@ -4,6 +4,7 @@ const Role = models.role;
 const verify = require('../jwt/verify');
 
 exports.register = (req, res, next) => {
+    console.log("Register Body ", req.body)
     var count = 0;
     User.findAndCountAll({ where: { email: req.body.email } }).then(user => {
 
@@ -30,8 +31,9 @@ exports.register = (req, res, next) => {
 
 
 exports.login = (req, res, next) => {
+    console.log("Login Body ", req.body)
     User.findOne({ where: { email: req.body.email } }).then(user => {
-        console.log(user);
+        console.log("User ", user);
         if (user) {
             if (user.comparePassword(req.body.password)) {
                 res.json({ token: user.getJWT() });
