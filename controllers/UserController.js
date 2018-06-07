@@ -4,18 +4,17 @@ const Role = models.role;
 const verify = require('../jwt/verify');
 
 exports.register = (req, res, next) => {
+    var count = 0;
     User.findAndCountAll({ where: { email: req.body.email } }).then(user => {
-        var count = user["count"];
+
+        if (user) {
+            count = user["count"];
+        }
+
         if (count > 0) {
             res.json({ "success": false, message: "This email address already exists" })
         } else {
-            var role;
-            Role.create({ roleName: "Admin" }).then(r => {
-                console.log("R ", r.id);
-                req.body.roleId = r.id;
-            });
 
-            console.log(req.body);
             User.create(req.body)
                 .then(user =>
                     res.json({ success: true, message: "You have successfully registered. Please proceed to login" })
@@ -32,7 +31,7 @@ exports.register = (req, res, next) => {
 
 exports.login = (req, res, next) => {
     User.findOne({ where: { email: req.body.email } }).then(user => {
-        //console.log(user);
+        console.log(user);
         if (user) {
             if (user.comparePassword(req.body.password)) {
                 res.json({ token: user.getJWT() });
