@@ -47,7 +47,7 @@ exports.edit = (req, res, next) => {
 }
 
 exports.show = (req, res, next) => {
-    Restaurant.findOne({ where: { id: req.body.id } })
+    Restaurant.findOne({ where: { id: req.body.id }, include: [Product] })
         .then(restaurant => {
             if (restaurant) {
                 res.json({ "success": true, restaurant });
