@@ -7,7 +7,6 @@ exports.register = (req, res, next) => {
     console.log("Register Body ", req.body)
     var count = 0;
     User.findAndCountAll({ where: { email: req.body.email } }).then(user => {
-
         if (user) {
             count = user["count"];
         }
