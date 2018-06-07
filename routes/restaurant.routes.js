@@ -12,7 +12,7 @@ router.post('/add', verify.verifyToken, RestaurantController.create);
 
 router.put('/edit/:id', verify.verifyToken, RestaurantController.edit);
 
-router.get('/get/:id', verify.verifyToken, RestaurantController.show);
+router.get('/get/:id', RestaurantController.show);
 
 router.delete('/delete/:id', verify.verifyToken, RestaurantController.delete);
 
