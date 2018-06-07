@@ -1,5 +1,6 @@
 const models = require("../models");
 const Role = models.role;
+const User = models.user;
 const verify = require('../jwt/verify');
 
 exports.addRole = (req, res, next) => {
@@ -19,5 +20,17 @@ exports.addRole = (req, res, next) => {
 
 }
 exports.addUser = (req, res, next) => {
+    const verification = verify.verify(req, res, next);
 
+    if (verification) {
+        User.create(req.body).then(user => {
+            if (user) {
+                res.json({ "success": true, message: "User successfully created!", user });
+            } else {
+                res.json({ "success": false, message: "An error occured. Please try again later" });
+            }
+        });
+    } else {
+        res.sendStatus(403);
+    }
 }

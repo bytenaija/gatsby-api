@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const UserRoutes = require("./routes/user.routes");
 const RestaurantRoutes = require("./routes/restaurant.routes");
+const AdminRoutes = require("./routes/admin.routes");
 const models = require('./models');
 
 // Set up the express app
@@ -17,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use("/api/user", UserRoutes);
-app.use("/api/restaurant", RestaurantRoutes);
+app.use("/api/admin", AdminRoutes);
 
 app.use(function(req, res, next) {
     // Website you wish to allow to connect
