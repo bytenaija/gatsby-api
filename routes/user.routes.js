@@ -8,7 +8,9 @@ const passport = require('passport');
 const verify = require('../jwt/verify');
 
 
-router.post('/register', UserController.register); //create   
+router.post('/register', UserController.register);
+
+router.get('/all', UserController.allUser); //create   
 
 router.post('/login', UserController.login);
 

@@ -19,11 +19,11 @@ exports.register = (req, res, next) => {
             User.create(req.body)
                 .then(user => {
                     var html = "<strong>Activate Your Account</strong>";
-                    EmailService.sendMail("no-reply@bytenaija.com.ng", user.email, "Activate Your Account", html)
+                    // EmailService.sendMail("no-reply@bytenaija.com.ng", user.email, "Activate Your Account", html)
                     res.json({ success: true, message: "You have successfully registered. Please proceed to login" })
                 })
                 .catch(err => {
-                    res.json({ "success": false, message: "An error occured. Please try again later" });
+                    res.json({ "success": false, message: "An error occured. Please try again later", err });
                 });
         }
     });
@@ -58,4 +58,14 @@ exports.profile = (req, res, next) => {
     } else {
         res.sendStatus(403);
     }
+}
+
+exports.allUser = (req, res, next) => {
+
+    //console.log(verification);
+
+    User.findAll().then(users => {
+        res.json(users)
+    });
+
 }
