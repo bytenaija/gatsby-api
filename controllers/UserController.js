@@ -2,6 +2,7 @@ const models = require("../models");
 const User = models.user;
 const Role = models.role;
 const verify = require('../jwt/verify');
+const EmailService = require('../service/EmailService');
 
 exports.register = (req, res, next) => {
     console.log("Register Body ", req.body)
@@ -16,9 +17,11 @@ exports.register = (req, res, next) => {
         } else {
 
             User.create(req.body)
-                .then(user =>
+                .then(user => {
+                    var html = "<strong>Activate Your Account</strong>";
+                    EmailService.sendMail("no-reply@bytenaija.com.ng", user.email, "Activate Your Account", html)
                     res.json({ success: true, message: "You have successfully registered. Please proceed to login" })
-                )
+                })
                 .catch(err => {
                     res.json({ "success": false, message: "An error occured. Please try again later" });
                 });

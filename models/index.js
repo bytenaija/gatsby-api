@@ -20,6 +20,9 @@ const models = {
     user: sequelize.import("./user"),
     restaurant: sequelize.import("./restaurant"),
     product: sequelize.import("./product"),
+    branch: sequelize.import("./branch"),
+    reminder: sequelize.import("./reminder"),
+    activation: sequelize.import("./activation"),
 }
 
 Object.keys(models).forEach(modelName => {

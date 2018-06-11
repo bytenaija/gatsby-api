@@ -17,8 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use("/api/user", UserRoutes);
-app.use("/api/admin", AdminRoutes);
+app.use("/user", UserRoutes);
+app.use("/admin", AdminRoutes);
+app.use("/restaurant", RestaurantRoutes);
 
 app.use(function(req, res, next) {
     // Website you wish to allow to connect
@@ -37,11 +38,11 @@ app.use(function(req, res, next) {
 
 
 // catch 404 and forward to error handler
-/* app.use(function(req, res, next) {
+app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
-}); */
+});
 
 // error handler
 /* app.use(function(err, req, res, next) {
