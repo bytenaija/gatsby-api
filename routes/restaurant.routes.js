@@ -5,7 +5,6 @@ const RestaurantController = require('../controllers/RestaurantController');
 
 const verify = require('../jwt/verify');
 
-
 router.get('/', RestaurantController.getAll); //return all restaurants   
 
 router.post('/add', verify.verifyToken, RestaurantController.create);
