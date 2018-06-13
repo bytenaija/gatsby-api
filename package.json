@@ -8,8 +8,8 @@
     "build-babel": "babel -d ./build ./src -s",
     "dev": "babel-node src/server.js",
     "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./build/server.js",
-    "prestart": "npm run -s build",
+    "start": "node ./build/server.js",
+    "postinstall": "npm run -s build",
     "test": "eslint src"
   },
   "author": "Everistu Olumese::InnoverNG <everistusolumese@gmail.com>",
@@ -31,7 +31,10 @@
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "pug": "^2.0.3",
-    "sequelize": "^4.37.10"
+    "sequelize": "^4.37.10",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -52,9 +55,6 @@
     "npm": "6.x"
   },
   "devDependencies": {
-    "@types/graphql": "^0.13.1",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-polyfill": "^6.26.0"
+    "@types/graphql": "^0.13.1"
   }
 }
