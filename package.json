@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./src -s",
-    "dev": "node src/server.js",
+    "dev": "babel-node src/server.js",
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && node ./build/server.js",
     "prestart": "npm run -s build",
@@ -52,6 +52,7 @@
     "npm": "6.x"
   },
   "devDependencies": {
+    "@types/graphql": "^0.13.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0"

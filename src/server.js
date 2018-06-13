@@ -1,3 +1,7 @@
+import { GraphSchema } from './graph/GraphSchema'
+import { graphql } from 'graphql'
+import graphqlHTTP from 'express-graphql'
+
 require('babel-core/register')
 require('babel-polyfill')
 
@@ -42,6 +46,14 @@ app.use(function(req, res, next) {
   next()
 })
 // Setup a default catch-all route that sends back a welcome message in JSON format.
+
+app.use(
+  '/graph',
+  graphqlHTTP(req => ({
+    schema: GraphSchema,
+    graphiql: true
+  }))
+)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
