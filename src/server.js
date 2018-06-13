@@ -1,5 +1,5 @@
-require('babel-core/register')
-require('babel-polyfill')
+import 'babel-core/register'
+import 'babel-polyfill'
 
 import { GraphSchema } from './graph/GraphSchema'
 import { graphql } from 'graphql'
