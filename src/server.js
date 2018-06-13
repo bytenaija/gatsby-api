@@ -1,9 +1,9 @@
+require('babel-core/register')
+require('babel-polyfill')
+
 import { GraphSchema } from './graph/GraphSchema'
 import { graphql } from 'graphql'
 import graphqlHTTP from 'express-graphql'
-
-require('babel-core/register')
-require('babel-polyfill')
 
 const express = require('express')
 const logger = require('morgan')
