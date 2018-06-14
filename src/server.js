@@ -20,7 +20,7 @@ import { connectionHelper } from './graph/relay/helpers'
 
 const app = express()
 
-// app.use(logger('dev'))
+app.use(logger('dev'))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
