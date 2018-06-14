@@ -12,7 +12,7 @@ import { Product } from './types/product.type'
 export const resolvers = {
   Query: {
     profile: (_, ___, { currentUser }) => currentUser,
-    ...resource('user'),
+    ...resource('user', { unique: ['username', 'email'] }),
     ...resource('activation'),
     ...resource(['branch', 'branches']),
     ...resource('product'),
