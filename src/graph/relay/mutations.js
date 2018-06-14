@@ -17,6 +17,13 @@ export function mutations(name) {
       const obj = await Models[name].findById(id)
 
       return { [name]: await obj.update(patch) }
+    },
+
+    [`delete${model}ById`]: async (_, { input: { id } }) => {
+      const obj = await Models[name].findById(id)
+      obj && obj.destroy()
+
+      return { [name]: obj, [`deleted${model}Id`]: id }
     }
   }
 }
