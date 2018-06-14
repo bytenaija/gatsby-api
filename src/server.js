@@ -20,7 +20,7 @@ import { connectionHelper } from './graph/relay/helpers'
 
 const app = express()
 
-app.use(logger('dev'))
+// app.use(logger('dev'))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -49,18 +49,24 @@ app.use(function(req, res, next) {
   next()
 })
 
-// app.use('/graph', (req, res, next) => {
-//   const verification = verify.verify(req, res, next)
-//   if (verification) {
-//     req.user = verification
-//     next()
-//   } else {
-//     res.status(401).json({
-//       //unauthorized token
-//       message: 'You are not authorized'
-//     })
-//   }
-// })
+app.use('/relay', (req, res, next) => {
+  verify.verifyToken(req, res, next)
+})
+
+app.use('/relay', (req, res, next) => {
+  const verification = verify.verify(req, res, next)
+
+  if (verification) {
+    req.user = models.user.findById(verification.id)
+  }
+  next()
+  // else {
+  //   res.status(401).json({
+  //     //unauthorized token
+  //     message: 'You are not authorized'
+  //   })
+  // }
+})
 
 app.use(
   '/graph',
