@@ -1,7 +1,7 @@
 import { GraphQLString, GraphQLID } from 'graphql/type'
 import { mutationWithClientMutationId } from 'graphql-relay'
 import { UserType } from '../types/UserType'
-import models from '../../models'
+import models from '../../../models'
 
 export const createUser = mutationWithClientMutationId({
   name: 'CreateUser',

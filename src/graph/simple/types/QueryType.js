@@ -7,7 +7,7 @@ import {
   GraphQLID
 } from 'graphql/type'
 
-import models from '../../models'
+import models from '../../../models'
 
 export const QueryType = new GraphQLObjectType({
   name: 'RootQueryType',

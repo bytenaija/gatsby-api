@@ -10,7 +10,7 @@ import {
 import { QueryType } from './types/QueryType'
 import { MutationType } from './types/MutationType'
 
-export const GraphSchema = new GraphQLSchema({
+export const schema = new GraphQLSchema({
   query: QueryType,
   mutation: MutationType
 })

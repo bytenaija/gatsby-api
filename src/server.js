@@ -1,24 +1,27 @@
 import 'babel-core/register'
 import 'babel-polyfill'
 
-import { GraphSchema } from './graph/GraphSchema'
 import { graphql } from 'graphql'
 import graphqlHTTP from 'express-graphql'
 
-const express = require('express')
-const logger = require('morgan')
-const UserRoutes = require('./routes/user.routes')
-const RestaurantRoutes = require('./routes/restaurant.routes')
-const AdminRoutes = require('./routes/admin.routes')
-const models = require('./models')
+import { schema as RelaySchema } from './graph/relay/schema'
+import { schema as SimpleSchema } from './graph/simple/schema'
 
-// Set up the express app
+import verify from './jwt/verify'
+import express from 'express'
+import logger from 'morgan'
+
+import UserRoutes from './routes/user.routes'
+import RestaurantRoutes from './routes/restaurant.routes'
+import AdminRoutes from './routes/admin.routes'
+import models from './models'
+
+import { connectionHelper } from './graph/relay/helpers'
+
 const app = express()
 
-// Log requests to the //console.
 app.use(logger('dev'))
 
-// Parse incoming requests data (https://github.com/expressjs/body-parser)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
@@ -45,13 +48,40 @@ app.use(function(req, res, next) {
   // Pass to next layer of middleware
   next()
 })
-// Setup a default catch-all route that sends back a welcome message in JSON format.
+
+// app.use('/graph', (req, res, next) => {
+//   const verification = verify.verify(req, res, next)
+//   if (verification) {
+//     req.user = verification
+//     next()
+//   } else {
+//     res.status(401).json({
+//       //unauthorized token
+//       message: 'You are not authorized'
+//     })
+//   }
+// })
 
 app.use(
   '/graph',
   graphqlHTTP(req => ({
-    schema: GraphSchema,
-    graphiql: true
+    schema: SimpleSchema,
+    graphiql: true,
+    context: {
+      currentUser: req.user
+    }
+  }))
+)
+
+app.use(
+  '/relay',
+  graphqlHTTP(req => ({
+    schema: RelaySchema,
+    graphiql: true,
+    context: {
+      currentUser: req.user,
+      edgeFunction: connectionHelper
+    }
   }))
 )
 
