@@ -17,6 +17,7 @@ import AdminRoutes from './routes/admin.routes'
 import models from './models'
 
 import { connectionHelper } from './graph/relay/helpers'
+import { formatError } from 'apollo-errors'
 
 const app = express()
 
@@ -75,7 +76,8 @@ app.use(
     graphiql: true,
     context: {
       currentUser: req.user
-    }
+    },
+    formatError
   }))
 )
 
@@ -87,7 +89,8 @@ app.use(
     context: {
       currentUser: req.user,
       edgeFunction: connectionHelper
-    }
+    },
+    formatError
   }))
 )
 
