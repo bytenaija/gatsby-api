@@ -9,6 +9,7 @@ import { schema as SimpleSchema } from './graph/simple/schema'
 
 import verify from './jwt/verify'
 import express from 'express'
+import cors from 'cors'
 import logger from 'morgan'
 
 import UserRoutes from './routes/user.routes'
@@ -18,30 +19,37 @@ import models from './models'
 
 import { connectionHelper } from './graph/relay/helpers'
 import { formatError } from 'apollo-errors'
-
 const app = express()
 
+var corsOptions = {
+  origin: ['http://localhost:3000', 'http://foodgatsby.com'],
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  methods: ['GET', 'PUT', 'POST', 'OPTIONS'],
+  credentials: true
+}
+
+app.use(cors(corsOptions))
 app.use(logger('dev'))
 
-app.use(function(req, res, next) {
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  // Request methods you wish to allow
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-  )
-  // Request headers you wish to allow
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-Requested-With, content-type, Authorization, Content-Type'
-  )
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  // Pass to next layer of middleware
-  next()
-})
+// app.use(function(req, res, next) {
+//   // Website you wish to allow to connect
+//   res.setHeader('Access-Control-Allow-Origin', '*')
+//   // Request methods you wish to allow
+//   res.setHeader(
+//     'Access-Control-Allow-Methods',
+//     'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+//   )
+//   // Request headers you wish to allow
+//   res.setHeader(
+//     'Access-Control-Allow-Headers',
+//     'X-Requested-With, content-type, Authorization, Content-Type'
+//   )
+//   // Set to true if you need the website to include cookies in the requests sent
+//   // to the API (e.g. in case you use sessions)
+//   res.setHeader('Access-Control-Allow-Credentials', true)
+//   // Pass to next layer of middleware
+//   next()
+// })
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

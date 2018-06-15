@@ -19,9 +19,12 @@ exports.register = (req, res, next) => {
         .then(user => {
           var html = '<strong>Activate Your Account</strong>'
           // EmailService.sendMail("no-reply@bytenaija.com.ng", user.email, "Activate Your Account", html)
+          const { firstname, username, lastname, id } = user
           res.json({
             success: true,
-            message: 'You have successfully registered. Please proceed to login'
+            message:
+              'You have successfully registered. Please proceed to login',
+            user: { firstname, username, lastname, id }
           })
         })
         .catch(err => {
@@ -41,11 +44,12 @@ exports.login = (req, res, next) => {
     console.log('User ', user)
     if (user) {
       if (user.comparePassword(req.body.password)) {
-        const { password, email, phonenumber, ...userResponse } = user
+        const { firstname, username, lastname, id } = user
 
         res.json({
+          success: true,
           token: user.getJWT(),
-          user: userResponse
+          user: { lastname, firstname, id, username }
         })
       }
     } else {
