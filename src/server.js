@@ -23,13 +23,6 @@ const app = express()
 
 app.use(logger('dev'))
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-
-app.use('/user', UserRoutes)
-app.use('/admin', AdminRoutes)
-app.use('/restaurant', RestaurantRoutes)
-
 app.use(function(req, res, next) {
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -49,6 +42,13 @@ app.use(function(req, res, next) {
   // Pass to next layer of middleware
   next()
 })
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+app.use('/user', UserRoutes)
+app.use('/admin', AdminRoutes)
+app.use('/restaurant', RestaurantRoutes)
 
 app.use('/relay', (req, res, next) => {
   verify.verifyToken(req, res, next)
