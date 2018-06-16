@@ -22,13 +22,19 @@ import { formatError } from 'apollo-errors'
 const app = express()
 
 var corsOptions = {
-  origin: ['http://localhost:3000', 'http://foodgatsby.com'],
+  origin: [
+    'http://localhost:3000',
+    'http://foodgatsby.com',
+    'https://foodgatsby.com'
+  ],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  methods: ['GET', 'PUT', 'POST', 'OPTIONS'],
+  methods: ['ACCEPT', 'GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Accept', 'Content-Type', 'Set-Cookie'],
   credentials: true
 }
 
 app.use(cors(corsOptions))
+// app.options('*', cors())
 app.use(logger('dev'))
 
 // app.use(function(req, res, next) {
