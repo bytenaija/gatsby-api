@@ -41,7 +41,7 @@ exports.register = (req, res, next) => {
 exports.login = (req, res, next) => {
   console.log('Login Body ', req.body)
   User.findOne({ where: { email: req.body.email } }).then(user => {
-    console.log('User ', user)
+    // console.log('User ', user)
     if (user) {
       if (user.comparePassword(req.body.password)) {
         const { firstname, username, lastname, id } = user
