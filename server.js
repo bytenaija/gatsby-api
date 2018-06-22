@@ -1,14 +1,14 @@
 const express = require('express');
 const logger = require('morgan');
-const UserRoutes = require("./routes/user.routes");
-const RestaurantRoutes = require("./routes/restaurant.routes");
-const AdminRoutes = require("./routes/admin.routes");
-const models = require('./models');
+const UserRoutes = require("./src/routes/user.routes");
+const RestaurantRoutes = require("./src/routes/restaurant.routes");
+const AdminRoutes = require("./src/routes/admin.routes");
+const models = require('./src/models');
 const enforce = require('express-sslify');
 
 // Set up the express app
 const app = express();
-if (req.app.get('env') !== 'development') {
+if (app.get('env') !== 'development') {
     app.use(enforce.HTTPS({ trustProtoHeader: true }))
 }
 
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use("/user", UserRoutes);
+app.use("/users", UserRoutes);
 app.use("/admin", AdminRoutes);
 app.use("/restaurant", RestaurantRoutes);
 
