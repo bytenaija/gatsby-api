@@ -1,0 +1,2324 @@
+type Activation implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  id: Int!
+  code: String
+  expiresAt: Datetime
+  createdAt: Datetime
+  updatedAt: Datetime
+  userId: Int
+
+  # Reads a single `User` that is related to this `Activation`.
+  userByUserId: User
+}
+
+# A condition to be used against `Activation` object types. All fields are tested
+# for equality and combined with a logical ‘and.’
+input ActivationCondition {
+  # Checks for equality with the object’s `id` field.
+  id: Int
+
+  # Checks for equality with the object’s `code` field.
+  code: String
+
+  # Checks for equality with the object’s `expiresAt` field.
+  expiresAt: Datetime
+
+  # Checks for equality with the object’s `createdAt` field.
+  createdAt: Datetime
+
+  # Checks for equality with the object’s `updatedAt` field.
+  updatedAt: Datetime
+
+  # Checks for equality with the object’s `userId` field.
+  userId: Int
+}
+
+# An input for mutations affecting `Activation`
+input ActivationInput {
+  id: Int
+  code: String
+  expiresAt: Datetime
+  createdAt: Datetime
+  updatedAt: Datetime
+  userId: Int
+}
+
+# Represents an update to a `Activation`. Fields that are set will be updated.
+input ActivationPatch {
+  id: Int
+  code: String
+  expiresAt: Datetime
+  createdAt: Datetime
+  updatedAt: Datetime
+  userId: Int
+}
+
+# A connection to a list of `Activation` values.
+type ActivationsConnection {
+  # A list of `Activation` objects.
+  nodes: [Activation]!
+
+  # A list of edges which contains the `Activation` and cursor to aid in pagination.
+  edges: [ActivationsEdge!]!
+
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # The count of *all* `Activation` you could get from the connection.
+  totalCount: Int
+}
+
+# A `Activation` edge in the connection.
+type ActivationsEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+
+  # The `Activation` at the end of the edge.
+  node: Activation
+}
+
+# Methods to use when ordering `Activation`.
+enum ActivationsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  CODE_ASC
+  CODE_DESC
+  EXPIRES_AT_ASC
+  EXPIRES_AT_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  USER_ID_ASC
+  USER_ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+type Branch implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  id: Int!
+  name: String
+  latitude: String
+  longitude: String
+  contactEmail: String
+  contactPhone: String
+  address: String
+  areaId: String
+  createdAt: Datetime
+  updatedAt: Datetime
+  restaurantId: Int
+
+  # Reads a single `Restaurant` that is related to this `Branch`.
+  restaurantByRestaurantId: Restaurant
+}
+
+# A condition to be used against `Branch` object types. All fields are tested for equality and combined with a logical ‘and.’
+input BranchCondition {
+  # Checks for equality with the object’s `id` field.
+  id: Int
+
+  # Checks for equality with the object’s `name` field.
+  name: String
+
+  # Checks for equality with the object’s `latitude` field.
+  latitude: String
+
+  # Checks for equality with the object’s `longitude` field.
+  longitude: String
+
+  # Checks for equality with the object’s `contactEmail` field.
+  contactEmail: String
+
+  # Checks for equality with the object’s `contactPhone` field.
+  contactPhone: String
+
+  # Checks for equality with the object’s `address` field.
+  address: String
+
+  # Checks for equality with the object’s `areaId` field.
+  areaId: String
+
+  # Checks for equality with the object’s `createdAt` field.
+  createdAt: Datetime
+
+  # Checks for equality with the object’s `updatedAt` field.
+  updatedAt: Datetime
+
+  # Checks for equality with the object’s `restaurantId` field.
+  restaurantId: Int
+}
+
+# A connection to a list of `Branch` values.
+type BranchesConnection {
+  # A list of `Branch` objects.
+  nodes: [Branch]!
+
+  # A list of edges which contains the `Branch` and cursor to aid in pagination.
+  edges: [BranchesEdge!]!
+
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # The count of *all* `Branch` you could get from the connection.
+  totalCount: Int
+}
+
+# A `Branch` edge in the connection.
+type BranchesEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+
+  # The `Branch` at the end of the edge.
+  node: Branch
+}
+
+# Methods to use when ordering `Branch`.
+enum BranchesOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  NAME_ASC
+  NAME_DESC
+  LATITUDE_ASC
+  LATITUDE_DESC
+  LONGITUDE_ASC
+  LONGITUDE_DESC
+  CONTACT_EMAIL_ASC
+  CONTACT_EMAIL_DESC
+  CONTACT_PHONE_ASC
+  CONTACT_PHONE_DESC
+  ADDRESS_ASC
+  ADDRESS_DESC
+  AREA_ID_ASC
+  AREA_ID_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  RESTAURANT_ID_ASC
+  RESTAURANT_ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+# An input for mutations affecting `Branch`
+input BranchInput {
+  id: Int
+  name: String
+  latitude: String
+  longitude: String
+  contactEmail: String
+  contactPhone: String
+  address: String
+  areaId: String
+  createdAt: Datetime
+  updatedAt: Datetime
+  restaurantId: Int
+}
+
+# Represents an update to a `Branch`. Fields that are set will be updated.
+input BranchPatch {
+  id: Int
+  name: String
+  latitude: String
+  longitude: String
+  contactEmail: String
+  contactPhone: String
+  address: String
+  areaId: String
+  createdAt: Datetime
+  updatedAt: Datetime
+  restaurantId: Int
+}
+
+# All input for the create `Activation` mutation.
+input CreateActivationInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The `Activation` to be created by this mutation.
+  activation: ActivationInput!
+}
+
+# The output of our create `Activation` mutation.
+type CreateActivationPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Activation` that was created by this mutation.
+  activation: Activation
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `User` that is related to this `Activation`.
+  userByUserId: User
+
+  # An edge for our `Activation`. May be used by Relay 1.
+  activationEdge(
+    # The method to use when ordering `Activation`.
+    orderBy: [ActivationsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ActivationsEdge
+}
+
+# All input for the create `Branch` mutation.
+input CreateBranchInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The `Branch` to be created by this mutation.
+  branch: BranchInput!
+}
+
+# The output of our create `Branch` mutation.
+type CreateBranchPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Branch` that was created by this mutation.
+  branch: Branch
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `Restaurant` that is related to this `Branch`.
+  restaurantByRestaurantId: Restaurant
+
+  # An edge for our `Branch`. May be used by Relay 1.
+  branchEdge(
+    # The method to use when ordering `Branch`.
+    orderBy: [BranchesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): BranchesEdge
+}
+
+# All input for the create `Product` mutation.
+input CreateProductInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The `Product` to be created by this mutation.
+  product: ProductInput!
+}
+
+# The output of our create `Product` mutation.
+type CreateProductPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Product` that was created by this mutation.
+  product: Product
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `Restaurant` that is related to this `Product`.
+  restaurantByRestaurantId: Restaurant
+
+  # An edge for our `Product`. May be used by Relay 1.
+  productEdge(
+    # The method to use when ordering `Product`.
+    orderBy: [ProductsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ProductsEdge
+}
+
+# All input for the create `Reminder` mutation.
+input CreateReminderInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The `Reminder` to be created by this mutation.
+  reminder: ReminderInput!
+}
+
+# The output of our create `Reminder` mutation.
+type CreateReminderPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Reminder` that was created by this mutation.
+  reminder: Reminder
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `User` that is related to this `Reminder`.
+  userByUserId: User
+
+  # An edge for our `Reminder`. May be used by Relay 1.
+  reminderEdge(
+    # The method to use when ordering `Reminder`.
+    orderBy: [RemindersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): RemindersEdge
+}
+
+# All input for the create `Restaurant` mutation.
+input CreateRestaurantInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The `Restaurant` to be created by this mutation.
+  restaurant: RestaurantInput!
+}
+
+# The output of our create `Restaurant` mutation.
+type CreateRestaurantPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Restaurant` that was created by this mutation.
+  restaurant: Restaurant
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # An edge for our `Restaurant`. May be used by Relay 1.
+  restaurantEdge(
+    # The method to use when ordering `Restaurant`.
+    orderBy: [RestaurantsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): RestaurantsEdge
+}
+
+# All input for the create `Role` mutation.
+input CreateRoleInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The `Role` to be created by this mutation.
+  role: RoleInput!
+}
+
+# The output of our create `Role` mutation.
+type CreateRolePayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Role` that was created by this mutation.
+  role: Role
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # An edge for our `Role`. May be used by Relay 1.
+  roleEdge(
+    # The method to use when ordering `Role`.
+    orderBy: [RolesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): RolesEdge
+}
+
+# All input for the create `User` mutation.
+input CreateUserInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The `User` to be created by this mutation.
+  user: UserInput!
+}
+
+# The output of our create `User` mutation.
+type CreateUserPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `User` that was created by this mutation.
+  user: User
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `Role` that is related to this `User`.
+  roleByRoleId: Role
+
+  # Reads a single `Restaurant` that is related to this `User`.
+  restaurantByRestaurantId: Restaurant
+
+  # An edge for our `User`. May be used by Relay 1.
+  userEdge(
+    # The method to use when ordering `User`.
+    orderBy: [UsersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): UsersEdge
+}
+
+# A location in a connection that can be used for resuming pagination.
+scalar Cursor
+
+# A point in time as described by the [ISO
+# 8601](https://en.wikipedia.org/wiki/ISO_8601) standard. May or may not include a timezone.
+scalar Datetime
+
+# All input for the `deleteActivationById` mutation.
+input DeleteActivationByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+  id: Int!
+}
+
+# All input for the `deleteActivation` mutation.
+input DeleteActivationInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Activation` to be deleted.
+  nodeId: ID!
+}
+
+# The output of our delete `Activation` mutation.
+type DeleteActivationPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Activation` that was deleted by this mutation.
+  activation: Activation
+  deletedActivationId: ID
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `User` that is related to this `Activation`.
+  userByUserId: User
+
+  # An edge for our `Activation`. May be used by Relay 1.
+  activationEdge(
+    # The method to use when ordering `Activation`.
+    orderBy: [ActivationsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ActivationsEdge
+}
+
+# All input for the `deleteBranchById` mutation.
+input DeleteBranchByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+  id: Int!
+}
+
+# All input for the `deleteBranch` mutation.
+input DeleteBranchInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Branch` to be deleted.
+  nodeId: ID!
+}
+
+# The output of our delete `Branch` mutation.
+type DeleteBranchPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Branch` that was deleted by this mutation.
+  branch: Branch
+  deletedBranchId: ID
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `Restaurant` that is related to this `Branch`.
+  restaurantByRestaurantId: Restaurant
+
+  # An edge for our `Branch`. May be used by Relay 1.
+  branchEdge(
+    # The method to use when ordering `Branch`.
+    orderBy: [BranchesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): BranchesEdge
+}
+
+# All input for the `deleteProductById` mutation.
+input DeleteProductByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+  id: Int!
+}
+
+# All input for the `deleteProduct` mutation.
+input DeleteProductInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Product` to be deleted.
+  nodeId: ID!
+}
+
+# The output of our delete `Product` mutation.
+type DeleteProductPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Product` that was deleted by this mutation.
+  product: Product
+  deletedProductId: ID
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `Restaurant` that is related to this `Product`.
+  restaurantByRestaurantId: Restaurant
+
+  # An edge for our `Product`. May be used by Relay 1.
+  productEdge(
+    # The method to use when ordering `Product`.
+    orderBy: [ProductsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ProductsEdge
+}
+
+# All input for the `deleteReminderById` mutation.
+input DeleteReminderByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+  id: Int!
+}
+
+# All input for the `deleteReminder` mutation.
+input DeleteReminderInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Reminder` to be deleted.
+  nodeId: ID!
+}
+
+# The output of our delete `Reminder` mutation.
+type DeleteReminderPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Reminder` that was deleted by this mutation.
+  reminder: Reminder
+  deletedReminderId: ID
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `User` that is related to this `Reminder`.
+  userByUserId: User
+
+  # An edge for our `Reminder`. May be used by Relay 1.
+  reminderEdge(
+    # The method to use when ordering `Reminder`.
+    orderBy: [RemindersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): RemindersEdge
+}
+
+# All input for the `deleteRestaurantById` mutation.
+input DeleteRestaurantByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+  id: Int!
+}
+
+# All input for the `deleteRestaurant` mutation.
+input DeleteRestaurantInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Restaurant` to be deleted.
+  nodeId: ID!
+}
+
+# The output of our delete `Restaurant` mutation.
+type DeleteRestaurantPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Restaurant` that was deleted by this mutation.
+  restaurant: Restaurant
+  deletedRestaurantId: ID
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # An edge for our `Restaurant`. May be used by Relay 1.
+  restaurantEdge(
+    # The method to use when ordering `Restaurant`.
+    orderBy: [RestaurantsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): RestaurantsEdge
+}
+
+# All input for the `deleteRoleById` mutation.
+input DeleteRoleByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+  id: Int!
+}
+
+# All input for the `deleteRole` mutation.
+input DeleteRoleInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Role` to be deleted.
+  nodeId: ID!
+}
+
+# The output of our delete `Role` mutation.
+type DeleteRolePayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Role` that was deleted by this mutation.
+  role: Role
+  deletedRoleId: ID
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # An edge for our `Role`. May be used by Relay 1.
+  roleEdge(
+    # The method to use when ordering `Role`.
+    orderBy: [RolesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): RolesEdge
+}
+
+# All input for the `deleteUserByEmail` mutation.
+input DeleteUserByEmailInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+  email: String!
+}
+
+# All input for the `deleteUserById` mutation.
+input DeleteUserByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+  id: Int!
+}
+
+# All input for the `deleteUserByUsername` mutation.
+input DeleteUserByUsernameInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+  username: String!
+}
+
+# All input for the `deleteUser` mutation.
+input DeleteUserInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `User` to be deleted.
+  nodeId: ID!
+}
+
+# The output of our delete `User` mutation.
+type DeleteUserPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `User` that was deleted by this mutation.
+  user: User
+  deletedUserId: ID
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `Role` that is related to this `User`.
+  roleByRoleId: Role
+
+  # Reads a single `Restaurant` that is related to this `User`.
+  restaurantByRestaurantId: Restaurant
+
+  # An edge for our `User`. May be used by Relay 1.
+  userEdge(
+    # The method to use when ordering `User`.
+    orderBy: [UsersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): UsersEdge
+}
+
+# The root mutation type which contains root level fields which mutate data.
+type Mutation {
+  # Creates a single `Activation`.
+  createActivation(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: CreateActivationInput!
+  ): CreateActivationPayload
+
+  # Creates a single `Branch`.
+  createBranch(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: CreateBranchInput!
+  ): CreateBranchPayload
+
+  # Creates a single `Product`.
+  createProduct(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: CreateProductInput!
+  ): CreateProductPayload
+
+  # Creates a single `Reminder`.
+  createReminder(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: CreateReminderInput!
+  ): CreateReminderPayload
+
+  # Creates a single `Restaurant`.
+  createRestaurant(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: CreateRestaurantInput!
+  ): CreateRestaurantPayload
+
+  # Creates a single `Role`.
+  createRole(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: CreateRoleInput!
+  ): CreateRolePayload
+
+  # Creates a single `User`.
+  createUser(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: CreateUserInput!
+  ): CreateUserPayload
+
+  # Updates a single `Activation` using its globally unique id and a patch.
+  updateActivation(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateActivationInput!
+  ): UpdateActivationPayload
+
+  # Updates a single `Activation` using a unique key and a patch.
+  updateActivationById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateActivationByIdInput!
+  ): UpdateActivationPayload
+
+  # Updates a single `Branch` using its globally unique id and a patch.
+  updateBranch(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateBranchInput!
+  ): UpdateBranchPayload
+
+  # Updates a single `Branch` using a unique key and a patch.
+  updateBranchById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateBranchByIdInput!
+  ): UpdateBranchPayload
+
+  # Updates a single `Product` using its globally unique id and a patch.
+  updateProduct(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateProductInput!
+  ): UpdateProductPayload
+
+  # Updates a single `Product` using a unique key and a patch.
+  updateProductById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateProductByIdInput!
+  ): UpdateProductPayload
+
+  # Updates a single `Reminder` using its globally unique id and a patch.
+  updateReminder(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateReminderInput!
+  ): UpdateReminderPayload
+
+  # Updates a single `Reminder` using a unique key and a patch.
+  updateReminderById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateReminderByIdInput!
+  ): UpdateReminderPayload
+
+  # Updates a single `Restaurant` using its globally unique id and a patch.
+  updateRestaurant(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateRestaurantInput!
+  ): UpdateRestaurantPayload
+
+  # Updates a single `Restaurant` using a unique key and a patch.
+  updateRestaurantById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateRestaurantByIdInput!
+  ): UpdateRestaurantPayload
+
+  # Updates a single `Role` using its globally unique id and a patch.
+  updateRole(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateRoleInput!
+  ): UpdateRolePayload
+
+  # Updates a single `Role` using a unique key and a patch.
+  updateRoleById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateRoleByIdInput!
+  ): UpdateRolePayload
+
+  # Updates a single `User` using its globally unique id and a patch.
+  updateUser(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateUserInput!
+  ): UpdateUserPayload
+
+  # Updates a single `User` using a unique key and a patch.
+  updateUserById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateUserByIdInput!
+  ): UpdateUserPayload
+
+  # Updates a single `User` using a unique key and a patch.
+  updateUserByUsername(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateUserByUsernameInput!
+  ): UpdateUserPayload
+
+  # Updates a single `User` using a unique key and a patch.
+  updateUserByEmail(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: UpdateUserByEmailInput!
+  ): UpdateUserPayload
+
+  # Deletes a single `Activation` using its globally unique id.
+  deleteActivation(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteActivationInput!
+  ): DeleteActivationPayload
+
+  # Deletes a single `Activation` using a unique key.
+  deleteActivationById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteActivationByIdInput!
+  ): DeleteActivationPayload
+
+  # Deletes a single `Branch` using its globally unique id.
+  deleteBranch(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteBranchInput!
+  ): DeleteBranchPayload
+
+  # Deletes a single `Branch` using a unique key.
+  deleteBranchById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteBranchByIdInput!
+  ): DeleteBranchPayload
+
+  # Deletes a single `Product` using its globally unique id.
+  deleteProduct(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteProductInput!
+  ): DeleteProductPayload
+
+  # Deletes a single `Product` using a unique key.
+  deleteProductById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteProductByIdInput!
+  ): DeleteProductPayload
+
+  # Deletes a single `Reminder` using its globally unique id.
+  deleteReminder(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteReminderInput!
+  ): DeleteReminderPayload
+
+  # Deletes a single `Reminder` using a unique key.
+  deleteReminderById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteReminderByIdInput!
+  ): DeleteReminderPayload
+
+  # Deletes a single `Restaurant` using its globally unique id.
+  deleteRestaurant(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteRestaurantInput!
+  ): DeleteRestaurantPayload
+
+  # Deletes a single `Restaurant` using a unique key.
+  deleteRestaurantById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteRestaurantByIdInput!
+  ): DeleteRestaurantPayload
+
+  # Deletes a single `Role` using its globally unique id.
+  deleteRole(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteRoleInput!
+  ): DeleteRolePayload
+
+  # Deletes a single `Role` using a unique key.
+  deleteRoleById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteRoleByIdInput!
+  ): DeleteRolePayload
+
+  # Deletes a single `User` using its globally unique id.
+  deleteUser(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteUserInput!
+  ): DeleteUserPayload
+
+  # Deletes a single `User` using a unique key.
+  deleteUserById(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteUserByIdInput!
+  ): DeleteUserPayload
+
+  # Deletes a single `User` using a unique key.
+  deleteUserByUsername(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteUserByUsernameInput!
+  ): DeleteUserPayload
+
+  # Deletes a single `User` using a unique key.
+  deleteUserByEmail(
+    # The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    input: DeleteUserByEmailInput!
+  ): DeleteUserPayload
+}
+
+# An object with a globally unique `ID`.
+interface Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+}
+
+# Information about pagination in a connection.
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+
+  # When paginating backwards, the cursor to continue.
+  startCursor: Cursor
+
+  # When paginating forwards, the cursor to continue.
+  endCursor: Cursor
+}
+
+type Product implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  id: Int!
+  name: String
+  description: String
+  price: String
+  disountPrice: String
+  createdAt: Datetime
+  updatedAt: Datetime
+  restaurantId: Int
+
+  # Reads a single `Restaurant` that is related to this `Product`.
+  restaurantByRestaurantId: Restaurant
+}
+
+# A condition to be used against `Product` object types. All fields are tested for equality and combined with a logical ‘and.’
+input ProductCondition {
+  # Checks for equality with the object’s `id` field.
+  id: Int
+
+  # Checks for equality with the object’s `name` field.
+  name: String
+
+  # Checks for equality with the object’s `description` field.
+  description: String
+
+  # Checks for equality with the object’s `price` field.
+  price: String
+
+  # Checks for equality with the object’s `disountPrice` field.
+  disountPrice: String
+
+  # Checks for equality with the object’s `createdAt` field.
+  createdAt: Datetime
+
+  # Checks for equality with the object’s `updatedAt` field.
+  updatedAt: Datetime
+
+  # Checks for equality with the object’s `restaurantId` field.
+  restaurantId: Int
+}
+
+# An input for mutations affecting `Product`
+input ProductInput {
+  id: Int
+  name: String
+  description: String
+  price: String
+  disountPrice: String
+  createdAt: Datetime
+  updatedAt: Datetime
+  restaurantId: Int
+}
+
+# Represents an update to a `Product`. Fields that are set will be updated.
+input ProductPatch {
+  id: Int
+  name: String
+  description: String
+  price: String
+  disountPrice: String
+  createdAt: Datetime
+  updatedAt: Datetime
+  restaurantId: Int
+}
+
+# A connection to a list of `Product` values.
+type ProductsConnection {
+  # A list of `Product` objects.
+  nodes: [Product]!
+
+  # A list of edges which contains the `Product` and cursor to aid in pagination.
+  edges: [ProductsEdge!]!
+
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # The count of *all* `Product` you could get from the connection.
+  totalCount: Int
+}
+
+# A `Product` edge in the connection.
+type ProductsEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+
+  # The `Product` at the end of the edge.
+  node: Product
+}
+
+# Methods to use when ordering `Product`.
+enum ProductsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  NAME_ASC
+  NAME_DESC
+  DESCRIPTION_ASC
+  DESCRIPTION_DESC
+  PRICE_ASC
+  PRICE_DESC
+  DISOUNT_PRICE_ASC
+  DISOUNT_PRICE_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  RESTAURANT_ID_ASC
+  RESTAURANT_ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+# The root query type which gives access points into the data universe.
+type Query implements Node {
+  # Exposes the root query type nested one level down. This is helpful for Relay 1
+  # which can only query top level fields if they are in a particular form.
+  query: Query!
+
+  # The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.
+  nodeId: ID!
+
+  # Fetches an object given its globally unique `ID`.
+  node(
+    # The globally unique `ID`.
+    nodeId: ID!
+  ): Node
+
+  # Reads and enables pagination through a set of `Activation`.
+  allActivations(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `Activation`.
+    orderBy: [ActivationsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: ActivationCondition
+  ): ActivationsConnection
+
+  # Reads and enables pagination through a set of `Branch`.
+  allBranches(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `Branch`.
+    orderBy: [BranchesOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: BranchCondition
+  ): BranchesConnection
+
+  # Reads and enables pagination through a set of `Product`.
+  allProducts(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `Product`.
+    orderBy: [ProductsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: ProductCondition
+  ): ProductsConnection
+
+  # Reads and enables pagination through a set of `Reminder`.
+  allReminders(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `Reminder`.
+    orderBy: [RemindersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: ReminderCondition
+  ): RemindersConnection
+
+  # Reads and enables pagination through a set of `Restaurant`.
+  allRestaurants(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `Restaurant`.
+    orderBy: [RestaurantsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: RestaurantCondition
+  ): RestaurantsConnection
+
+  # Reads and enables pagination through a set of `Role`.
+  allRoles(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `Role`.
+    orderBy: [RolesOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: RoleCondition
+  ): RolesConnection
+
+  # Reads and enables pagination through a set of `User`.
+  allUsers(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `User`.
+    orderBy: [UsersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: UserCondition
+  ): UsersConnection
+  activationById(id: Int!): Activation
+  branchById(id: Int!): Branch
+  productById(id: Int!): Product
+  reminderById(id: Int!): Reminder
+  restaurantById(id: Int!): Restaurant
+  roleById(id: Int!): Role
+  userById(id: Int!): User
+  userByUsername(username: String!): User
+  userByEmail(email: String!): User
+
+  # Reads a single `Activation` using its globally unique `ID`.
+  activation(
+    # The globally unique `ID` to be used in selecting a single `Activation`.
+    nodeId: ID!
+  ): Activation
+
+  # Reads a single `Branch` using its globally unique `ID`.
+  branch(
+    # The globally unique `ID` to be used in selecting a single `Branch`.
+    nodeId: ID!
+  ): Branch
+
+  # Reads a single `Product` using its globally unique `ID`.
+  product(
+    # The globally unique `ID` to be used in selecting a single `Product`.
+    nodeId: ID!
+  ): Product
+
+  # Reads a single `Reminder` using its globally unique `ID`.
+  reminder(
+    # The globally unique `ID` to be used in selecting a single `Reminder`.
+    nodeId: ID!
+  ): Reminder
+
+  # Reads a single `Restaurant` using its globally unique `ID`.
+  restaurant(
+    # The globally unique `ID` to be used in selecting a single `Restaurant`.
+    nodeId: ID!
+  ): Restaurant
+
+  # Reads a single `Role` using its globally unique `ID`.
+  role(
+    # The globally unique `ID` to be used in selecting a single `Role`.
+    nodeId: ID!
+  ): Role
+
+  # Reads a single `User` using its globally unique `ID`.
+  user(
+    # The globally unique `ID` to be used in selecting a single `User`.
+    nodeId: ID!
+  ): User
+
+  # Reads the current user
+  profile: User
+}
+
+type Reminder implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  id: Int!
+  code: String
+  expiresAt: Datetime
+  createdAt: Datetime
+  updatedAt: Datetime
+  userId: Int
+
+  # Reads a single `User` that is related to this `Reminder`.
+  userByUserId: User
+}
+
+# A condition to be used against `Reminder` object types. All fields are tested
+# for equality and combined with a logical ‘and.’
+input ReminderCondition {
+  # Checks for equality with the object’s `id` field.
+  id: Int
+
+  # Checks for equality with the object’s `code` field.
+  code: String
+
+  # Checks for equality with the object’s `expiresAt` field.
+  expiresAt: Datetime
+
+  # Checks for equality with the object’s `createdAt` field.
+  createdAt: Datetime
+
+  # Checks for equality with the object’s `updatedAt` field.
+  updatedAt: Datetime
+
+  # Checks for equality with the object’s `userId` field.
+  userId: Int
+}
+
+# An input for mutations affecting `Reminder`
+input ReminderInput {
+  id: Int
+  code: String
+  expiresAt: Datetime
+  createdAt: Datetime
+  updatedAt: Datetime
+  userId: Int
+}
+
+# Represents an update to a `Reminder`. Fields that are set will be updated.
+input ReminderPatch {
+  id: Int
+  code: String
+  expiresAt: Datetime
+  createdAt: Datetime
+  updatedAt: Datetime
+  userId: Int
+}
+
+# A connection to a list of `Reminder` values.
+type RemindersConnection {
+  # A list of `Reminder` objects.
+  nodes: [Reminder]!
+
+  # A list of edges which contains the `Reminder` and cursor to aid in pagination.
+  edges: [RemindersEdge!]!
+
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # The count of *all* `Reminder` you could get from the connection.
+  totalCount: Int
+}
+
+# A `Reminder` edge in the connection.
+type RemindersEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+
+  # The `Reminder` at the end of the edge.
+  node: Reminder
+}
+
+# Methods to use when ordering `Reminder`.
+enum RemindersOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  CODE_ASC
+  CODE_DESC
+  EXPIRES_AT_ASC
+  EXPIRES_AT_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  USER_ID_ASC
+  USER_ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+type Restaurant implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  id: Int!
+  name: String
+  slug: String
+  logo: String
+  tags: String
+  publishedAt: String
+  createdAt: Datetime
+  updatedAt: Datetime
+
+  # Reads and enables pagination through a set of `User`.
+  usersByRestaurantId(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `User`.
+    orderBy: [UsersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: UserCondition
+  ): UsersConnection!
+
+  # Reads and enables pagination through a set of `Product`.
+  productsByRestaurantId(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `Product`.
+    orderBy: [ProductsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: ProductCondition
+  ): ProductsConnection!
+
+  # Reads and enables pagination through a set of `Branch`.
+  branchesByRestaurantId(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `Branch`.
+    orderBy: [BranchesOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: BranchCondition
+  ): BranchesConnection!
+}
+
+# A condition to be used against `Restaurant` object types. All fields are tested
+# for equality and combined with a logical ‘and.’
+input RestaurantCondition {
+  # Checks for equality with the object’s `id` field.
+  id: Int
+
+  # Checks for equality with the object’s `name` field.
+  name: String
+
+  # Checks for equality with the object’s `slug` field.
+  slug: String
+
+  # Checks for equality with the object’s `logo` field.
+  logo: String
+
+  # Checks for equality with the object’s `tags` field.
+  tags: String
+
+  # Checks for equality with the object’s `publishedAt` field.
+  publishedAt: String
+
+  # Checks for equality with the object’s `createdAt` field.
+  createdAt: Datetime
+
+  # Checks for equality with the object’s `updatedAt` field.
+  updatedAt: Datetime
+}
+
+# An input for mutations affecting `Restaurant`
+input RestaurantInput {
+  id: Int
+  name: String
+  slug: String
+  logo: String
+  tags: String
+  publishedAt: String
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+# Represents an update to a `Restaurant`. Fields that are set will be updated.
+input RestaurantPatch {
+  id: Int
+  name: String
+  slug: String
+  logo: String
+  tags: String
+  publishedAt: String
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+# A connection to a list of `Restaurant` values.
+type RestaurantsConnection {
+  # A list of `Restaurant` objects.
+  nodes: [Restaurant]!
+
+  # A list of edges which contains the `Restaurant` and cursor to aid in pagination.
+  edges: [RestaurantsEdge!]!
+
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # The count of *all* `Restaurant` you could get from the connection.
+  totalCount: Int
+}
+
+# A `Restaurant` edge in the connection.
+type RestaurantsEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+
+  # The `Restaurant` at the end of the edge.
+  node: Restaurant
+}
+
+# Methods to use when ordering `Restaurant`.
+enum RestaurantsOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  NAME_ASC
+  NAME_DESC
+  SLUG_ASC
+  SLUG_DESC
+  LOGO_ASC
+  LOGO_DESC
+  TAGS_ASC
+  TAGS_DESC
+  PUBLISHED_AT_ASC
+  PUBLISHED_AT_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+type Role implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  id: Int!
+  name: String
+  displayName: String
+  description: String
+  createdAt: Datetime
+  updatedAt: Datetime
+
+  # Reads and enables pagination through a set of `User`.
+  usersByRoleId(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `User`.
+    orderBy: [UsersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: UserCondition
+  ): UsersConnection!
+}
+
+# A condition to be used against `Role` object types. All fields are tested for equality and combined with a logical ‘and.’
+input RoleCondition {
+  # Checks for equality with the object’s `id` field.
+  id: Int
+
+  # Checks for equality with the object’s `name` field.
+  name: String
+
+  # Checks for equality with the object’s `displayName` field.
+  displayName: String
+
+  # Checks for equality with the object’s `description` field.
+  description: String
+
+  # Checks for equality with the object’s `createdAt` field.
+  createdAt: Datetime
+
+  # Checks for equality with the object’s `updatedAt` field.
+  updatedAt: Datetime
+}
+
+# An input for mutations affecting `Role`
+input RoleInput {
+  id: Int
+  name: String
+  displayName: String
+  description: String
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+# Represents an update to a `Role`. Fields that are set will be updated.
+input RolePatch {
+  id: Int
+  name: String
+  displayName: String
+  description: String
+  createdAt: Datetime
+  updatedAt: Datetime
+}
+
+# A connection to a list of `Role` values.
+type RolesConnection {
+  # A list of `Role` objects.
+  nodes: [Role]!
+
+  # A list of edges which contains the `Role` and cursor to aid in pagination.
+  edges: [RolesEdge!]!
+
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # The count of *all* `Role` you could get from the connection.
+  totalCount: Int
+}
+
+# A `Role` edge in the connection.
+type RolesEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+
+  # The `Role` at the end of the edge.
+  node: Role
+}
+
+# Methods to use when ordering `Role`.
+enum RolesOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  NAME_ASC
+  NAME_DESC
+  DISPLAY_NAME_ASC
+  DISPLAY_NAME_DESC
+  DESCRIPTION_ASC
+  DESCRIPTION_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}
+
+# All input for the `updateActivationById` mutation.
+input UpdateActivationByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # An object where the defined keys will be set on the `Activation` being updated.
+  activationPatch: ActivationPatch!
+  id: Int!
+}
+
+# All input for the `updateActivation` mutation.
+input UpdateActivationInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Activation` to be updated.
+  nodeId: ID!
+
+  # An object where the defined keys will be set on the `Activation` being updated.
+  activationPatch: ActivationPatch!
+}
+
+# The output of our update `Activation` mutation.
+type UpdateActivationPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Activation` that was updated by this mutation.
+  activation: Activation
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `User` that is related to this `Activation`.
+  userByUserId: User
+
+  # An edge for our `Activation`. May be used by Relay 1.
+  activationEdge(
+    # The method to use when ordering `Activation`.
+    orderBy: [ActivationsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ActivationsEdge
+}
+
+# All input for the `updateBranchById` mutation.
+input UpdateBranchByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # An object where the defined keys will be set on the `Branch` being updated.
+  branchPatch: BranchPatch!
+  id: Int!
+}
+
+# All input for the `updateBranch` mutation.
+input UpdateBranchInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Branch` to be updated.
+  nodeId: ID!
+
+  # An object where the defined keys will be set on the `Branch` being updated.
+  branchPatch: BranchPatch!
+}
+
+# The output of our update `Branch` mutation.
+type UpdateBranchPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Branch` that was updated by this mutation.
+  branch: Branch
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `Restaurant` that is related to this `Branch`.
+  restaurantByRestaurantId: Restaurant
+
+  # An edge for our `Branch`. May be used by Relay 1.
+  branchEdge(
+    # The method to use when ordering `Branch`.
+    orderBy: [BranchesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): BranchesEdge
+}
+
+# All input for the `updateProductById` mutation.
+input UpdateProductByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # An object where the defined keys will be set on the `Product` being updated.
+  productPatch: ProductPatch!
+  id: Int!
+}
+
+# All input for the `updateProduct` mutation.
+input UpdateProductInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Product` to be updated.
+  nodeId: ID!
+
+  # An object where the defined keys will be set on the `Product` being updated.
+  productPatch: ProductPatch!
+}
+
+# The output of our update `Product` mutation.
+type UpdateProductPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Product` that was updated by this mutation.
+  product: Product
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `Restaurant` that is related to this `Product`.
+  restaurantByRestaurantId: Restaurant
+
+  # An edge for our `Product`. May be used by Relay 1.
+  productEdge(
+    # The method to use when ordering `Product`.
+    orderBy: [ProductsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): ProductsEdge
+}
+
+# All input for the `updateReminderById` mutation.
+input UpdateReminderByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # An object where the defined keys will be set on the `Reminder` being updated.
+  reminderPatch: ReminderPatch!
+  id: Int!
+}
+
+# All input for the `updateReminder` mutation.
+input UpdateReminderInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Reminder` to be updated.
+  nodeId: ID!
+
+  # An object where the defined keys will be set on the `Reminder` being updated.
+  reminderPatch: ReminderPatch!
+}
+
+# The output of our update `Reminder` mutation.
+type UpdateReminderPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Reminder` that was updated by this mutation.
+  reminder: Reminder
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `User` that is related to this `Reminder`.
+  userByUserId: User
+
+  # An edge for our `Reminder`. May be used by Relay 1.
+  reminderEdge(
+    # The method to use when ordering `Reminder`.
+    orderBy: [RemindersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): RemindersEdge
+}
+
+# All input for the `updateRestaurantById` mutation.
+input UpdateRestaurantByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # An object where the defined keys will be set on the `Restaurant` being updated.
+  restaurantPatch: RestaurantPatch!
+  id: Int!
+}
+
+# All input for the `updateRestaurant` mutation.
+input UpdateRestaurantInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Restaurant` to be updated.
+  nodeId: ID!
+
+  # An object where the defined keys will be set on the `Restaurant` being updated.
+  restaurantPatch: RestaurantPatch!
+}
+
+# The output of our update `Restaurant` mutation.
+type UpdateRestaurantPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Restaurant` that was updated by this mutation.
+  restaurant: Restaurant
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # An edge for our `Restaurant`. May be used by Relay 1.
+  restaurantEdge(
+    # The method to use when ordering `Restaurant`.
+    orderBy: [RestaurantsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): RestaurantsEdge
+}
+
+# All input for the `updateRoleById` mutation.
+input UpdateRoleByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # An object where the defined keys will be set on the `Role` being updated.
+  rolePatch: RolePatch!
+  id: Int!
+}
+
+# All input for the `updateRole` mutation.
+input UpdateRoleInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `Role` to be updated.
+  nodeId: ID!
+
+  # An object where the defined keys will be set on the `Role` being updated.
+  rolePatch: RolePatch!
+}
+
+# The output of our update `Role` mutation.
+type UpdateRolePayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `Role` that was updated by this mutation.
+  role: Role
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # An edge for our `Role`. May be used by Relay 1.
+  roleEdge(
+    # The method to use when ordering `Role`.
+    orderBy: [RolesOrderBy!] = [PRIMARY_KEY_ASC]
+  ): RolesEdge
+}
+
+# All input for the `updateUserByEmail` mutation.
+input UpdateUserByEmailInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # An object where the defined keys will be set on the `User` being updated.
+  userPatch: UserPatch!
+  email: String!
+}
+
+# All input for the `updateUserById` mutation.
+input UpdateUserByIdInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # An object where the defined keys will be set on the `User` being updated.
+  userPatch: UserPatch!
+  id: Int!
+}
+
+# All input for the `updateUserByUsername` mutation.
+input UpdateUserByUsernameInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # An object where the defined keys will be set on the `User` being updated.
+  userPatch: UserPatch!
+  username: String!
+}
+
+# All input for the `updateUser` mutation.
+input UpdateUserInput {
+  # An arbitrary string value with no semantic meaning. Will be included in the
+  # payload verbatim. May be used to track mutations by the client.
+  clientMutationId: String
+
+  # The globally unique `ID` which will identify a single `User` to be updated.
+  nodeId: ID!
+
+  # An object where the defined keys will be set on the `User` being updated.
+  userPatch: UserPatch!
+}
+
+# The output of our update `User` mutation.
+type UpdateUserPayload {
+  # The exact same `clientMutationId` that was provided in the mutation input,
+  # unchanged and unused. May be used by a client to track mutations.
+  clientMutationId: String
+
+  # The `User` that was updated by this mutation.
+  user: User
+
+  # Our root query field type. Allows us to run any query from our mutation payload.
+  query: Query
+
+  # Reads a single `Role` that is related to this `User`.
+  roleByRoleId: Role
+
+  # Reads a single `Restaurant` that is related to this `User`.
+  restaurantByRestaurantId: Restaurant
+
+  # An edge for our `User`. May be used by Relay 1.
+  userEdge(
+    # The method to use when ordering `User`.
+    orderBy: [UsersOrderBy!] = [PRIMARY_KEY_ASC]
+  ): UsersEdge
+}
+
+type User implements Node {
+  # A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  nodeId: ID!
+  id: Int!
+  firstname: String
+  lastname: String
+  username: String
+  email: String
+  phonenumber: String
+  avatar: String
+  createdAt: Datetime
+  updatedAt: Datetime
+  roleId: Int
+  restaurantId: Int
+
+  # Reads a single `Role` that is related to this `User`.
+  roleByRoleId: Role
+
+  # Reads a single `Restaurant` that is related to this `User`.
+  restaurantByRestaurantId: Restaurant
+
+  # Reads and enables pagination through a set of `Reminder`.
+  remindersByUserId(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `Reminder`.
+    orderBy: [RemindersOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: ReminderCondition
+  ): RemindersConnection!
+
+  # Reads and enables pagination through a set of `Activation`.
+  activationsByUserId(
+    # Only read the first `n` values of the set.
+    first: Int
+
+    # Only read the last `n` values of the set.
+    last: Int
+
+    # Skip the first `n` values from our `after` cursor, an alternative to cursor
+    # based pagination. May not be used with `last`.
+    offset: Int
+
+    # Read all values in the set before (above) this cursor.
+    before: Cursor
+
+    # Read all values in the set after (below) this cursor.
+    after: Cursor
+
+    # The method to use when ordering `Activation`.
+    orderBy: [ActivationsOrderBy!] = [PRIMARY_KEY_ASC]
+
+    # A condition to be used in determining which values should be returned by the collection.
+    condition: ActivationCondition
+  ): ActivationsConnection!
+}
+
+# A condition to be used against `User` object types. All fields are tested for equality and combined with a logical ‘and.’
+input UserCondition {
+  # Checks for equality with the object’s `id` field.
+  id: Int
+
+  # Checks for equality with the object’s `firstname` field.
+  firstname: String
+
+  # Checks for equality with the object’s `lastname` field.
+  lastname: String
+
+  # Checks for equality with the object’s `username` field.
+  username: String
+
+  # Checks for equality with the object’s `email` field.
+  email: String
+
+  # Checks for equality with the object’s `password` field.
+  password: String
+
+  # Checks for equality with the object’s `phonenumber` field.
+  phonenumber: String
+
+  # Checks for equality with the object’s `avatar` field.
+  avatar: String
+
+  # Checks for equality with the object’s `createdAt` field.
+  createdAt: Datetime
+
+  # Checks for equality with the object’s `updatedAt` field.
+  updatedAt: Datetime
+
+  # Checks for equality with the object’s `roleId` field.
+  roleId: Int
+
+  # Checks for equality with the object’s `restaurantId` field.
+  restaurantId: Int
+}
+
+# An input for mutations affecting `User`
+input UserInput {
+  id: Int
+  firstname: String
+  lastname: String
+  username: String
+  email: String
+  password: String
+  phonenumber: String
+  avatar: String
+  createdAt: Datetime
+  updatedAt: Datetime
+  roleId: Int
+  restaurantId: Int
+}
+
+# Represents an update to a `User`. Fields that are set will be updated.
+input UserPatch {
+  id: Int
+  firstname: String
+  lastname: String
+  username: String
+  email: String
+  password: String
+  phonenumber: String
+  avatar: String
+  createdAt: Datetime
+  updatedAt: Datetime
+  roleId: Int
+  restaurantId: Int
+}
+
+# A connection to a list of `User` values.
+type UsersConnection {
+  # A list of `User` objects.
+  nodes: [User]!
+
+  # A list of edges which contains the `User` and cursor to aid in pagination.
+  edges: [UsersEdge!]!
+
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # The count of *all* `User` you could get from the connection.
+  totalCount: Int
+}
+
+# A `User` edge in the connection.
+type UsersEdge {
+  # A cursor for use in pagination.
+  cursor: Cursor
+
+  # The `User` at the end of the edge.
+  node: User
+}
+
+# Methods to use when ordering `User`.
+enum UsersOrderBy {
+  NATURAL
+  ID_ASC
+  ID_DESC
+  FIRSTNAME_ASC
+  FIRSTNAME_DESC
+  LASTNAME_ASC
+  LASTNAME_DESC
+  USERNAME_ASC
+  USERNAME_DESC
+  EMAIL_ASC
+  EMAIL_DESC
+  PHONENUMBER_ASC
+  PHONENUMBER_DESC
+  AVATAR_ASC
+  AVATAR_DESC
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+  ROLE_ID_ASC
+  ROLE_ID_DESC
+  RESTAURANT_ID_ASC
+  RESTAURANT_ID_DESC
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+}

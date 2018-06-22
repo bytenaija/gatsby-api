@@ -10,7 +10,7 @@ exports.verifyToken = (req, res, next) => {
         req.token = bearerToken;
         next();
     } else {
-
+        next()
     }
 }
 

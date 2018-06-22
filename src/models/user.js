@@ -60,6 +60,9 @@ module.exports = (sequelize, DataTypes) => {
         return json;
     };
 
+    User.prototype.equals = function(user) {
+        return user && this.id === user.id;
+    }
 
     return User;
 };
