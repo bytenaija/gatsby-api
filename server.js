@@ -4,9 +4,14 @@ const UserRoutes = require("./routes/user.routes");
 const RestaurantRoutes = require("./routes/restaurant.routes");
 const AdminRoutes = require("./routes/admin.routes");
 const models = require('./models');
+const enforce = require('express-sslify');
 
 // Set up the express app
 const app = express();
+if (req.app.get('env') !== 'development') {
+    app.use(enforce.HTTPS({ trustProtoHeader: true }))
+}
+
 
 
 // Log requests to the //console.
