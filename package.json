@@ -12,7 +12,7 @@
         "postinstall": "npm run -s build",
         "test": "eslint src"
     },
-    "author": "Everistu Olumese::InnoverNG <everistusolumese@gmail.com>",
+    "author": "Everistu Olumese - InnoverNG <everistusolumese@gmail.com>",
     "license": "ISC",
     "dependencies": {
         "apollo-errors": "^1.9.0",
