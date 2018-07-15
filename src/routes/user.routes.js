@@ -14,6 +14,8 @@ router.get('/all', UserController.allUser); //create
 
 router.post('/login', UserController.login);
 
+router.put('/edit/:id', UserController.update);
+
 router.get('/profile/:id', verify.verifyToken, UserController.profile);
 
 module.exports = router;

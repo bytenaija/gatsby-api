@@ -3,6 +3,7 @@ const logger = require('morgan');
 const UserRoutes = require("./src/routes/user.routes");
 const RestaurantRoutes = require("./src/routes/restaurant.routes");
 const AdminRoutes = require("./src/routes/admin.routes");
+const ProductRoutes = require("./src/routes/product.routes");
 const models = require('./src/models');
 const enforce = require('express-sslify');
 
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/users", UserRoutes);
 app.use("/admin", AdminRoutes);
 app.use("/restaurant", RestaurantRoutes);
+app.use("/product", ProductRoutes);
 
 app.use(function(req, res, next) {
     // Website you wish to allow to connect
@@ -50,15 +52,15 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-/* app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    // res.locals.message = err.message;
-    //res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function(err, req, res, next) {
+    //set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // render the error page
-    //res.status(err.status || 500);
+    //render the error page
+    res.status(err.status || 500);
     res.json(err);
-}); */
+});
 
 var port = process.env.PORT || 8000;
 console.log("Port ", port);

@@ -11,6 +11,9 @@ router.post('/role/add', verify.verifyToken, AdminController.addRole);
 
 router.post('/user/add', verify.verifyToken, AdminController.addUser);
 
+router.post('/restaurant/publish', verify.verifyToken, AdminController.publishRestaurant);
+router.post('/checkout/delivery', AdminController.calculateDelivery);
+
 
 
 module.exports = router;

@@ -28,6 +28,8 @@
         "email-templates": "^4.0.1",
         "express": "^4.16.3",
         "express-graphql": "^0.6.12",
+        "express-sslify": "^1.2.0",
+        "google-distance-matrix": "^1.1.1",
         "graphql": "^0.13.2",
         "graphql-import": "^0.6.0",
         "graphql-relay": "^0.5.5",
