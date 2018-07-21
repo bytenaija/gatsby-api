@@ -7,7 +7,7 @@
         "clean": "rm -rf build && mkdir build",
         "build-babel": "babel -d ./build ./src -s",
         "dev": "nodemon server.js",
-        "build": "npm run clean && npm run build",
+        "build": "npm run clean && npm run build-babel",
         "start": "node ./build/server.js",
         "postinstall": "npm run -s build",
         "test": "eslint src"
