@@ -1,18 +1,17 @@
 const models = require("../models");
-const Restaurant = models.restaurant;
 const Product = models.product;
-const Branch = models.branch;
+const Restaurant = models.restaurant;
 const verify = require('../jwt/verify');
 
 exports.create = (req, res, next) => {
     const verification = verify.verify(req, res, next);
     //console.log(verification);
     if (verification) {
-        Restaurant.create(req.body).then(restaurant => {
-            if (restaurant) {
-                Restaurant.findAll()
-                    .then(restaurants => {
-                        res.json({ "success": true, message: "Restaurant successfully created!", restaurants });
+        Product.create(req.body).then(product => {
+            if (product) {
+                Product.findAll()
+                    .then(products => {
+                        res.json({ "success": true, message: "Product successfully created!", products });
                     })
 
             } else {
@@ -30,12 +29,12 @@ exports.edit = (req, res, next) => {
     //console.log(verification);
 
     if (verification) {
-        Restaurant.update(req.body, { where: { id: req.params.id } })
-            .then(restaurant => {
-                if (restaurant) {
-                    Restaurant.findAll()
-                        .then(restaurants => {
-                            res.json({ "success": true, message: "Restaurant successfully updated!", restaurants });
+        Product.update(req.body, { where: { id: req.params.id } })
+            .then(product => {
+                if (product) {
+                    Product.findAll()
+                        .then(products => {
+                            res.json({ "success": true, message: "Product successfully updated!", products });
                         })
 
                 } else {
@@ -49,10 +48,10 @@ exports.edit = (req, res, next) => {
 }
 
 exports.show = (req, res, next) => {
-    Restaurant.findOne({ where: { id: req.params.id }, include: [Branch, Product] })
-        .then(restaurant => {
-            if (restaurant) {
-                res.json({ "success": true, restaurant });
+    Product.findOne({ where: { id: req.params.id }, include: [Restaurant] })
+        .then(product => {
+            if (product) {
+                res.json({ "success": true, product });
             } else {
                 res.json({ "success": false, message: "An error occured. Please try again later" });
             }
@@ -65,9 +64,9 @@ exports.show = (req, res, next) => {
 
 exports.getAll = (req, res, next) => {
 
-    Restaurant.findAll({ include: [Branch, Product] })
-        .then(restaurants => {
-            res.json({ "success": true, restaurants });
+    Product.findAll()
+        .then(products => {
+            res.json({ "success": true, products });
         })
         .catch(err => {
             res.json({ "success": false, message: "An error occured. Please try again later" });
@@ -80,11 +79,11 @@ exports.delete = (req, res, next) => {
     const verification = verify.verify(req, res, next);
     //console.log(verification);
     if (verification) {
-        Restaurant.destroy({ where: { id: req.params.id } }).then(restaurant => {
-            if (restaurant) {
-                Restaurant.findAll()
-                    .then(restaurants => {
-                        res.json({ "success": true, message: "Restaurant successfully deleted!", restaurants });
+        Product.destroy({ where: { id: req.params.id } }).then(product => {
+            if (product) {
+                Product.findAll()
+                    .then(products => {
+                        res.json({ "success": true, message: "Product successfully deleted!", products });
                     })
             } else {
                 res.json({ "success": false, message: "An error occured. Please try again later" });

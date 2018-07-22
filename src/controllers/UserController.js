@@ -78,3 +78,18 @@ exports.allUser = (req, res, next) => {
         res.json(users)
     })
 }
+
+
+exports.update = (req, res, next) => {
+    const verification = verify.verify(req, res, next)
+        //console.log(verification);
+    if (verification) {
+        User.Update(req.body, { where: { id: req.params.id } }).then(
+            user => {
+                res.json(user)
+            }
+        )
+    } else {
+        res.sendStatus(403)
+    }
+}

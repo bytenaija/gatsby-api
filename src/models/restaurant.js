@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         slug: DataTypes.STRING,
         logo: DataTypes.STRING,
         tags: DataTypes.STRING,
-        published_at: DataTypes.STRING,
+        publishedAt: DataTypes.STRING,
     });
     Restaurant.associate = (models) => {
         // associations can be defined here
