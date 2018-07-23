@@ -1,7 +1,6 @@
 import 'babel-core/register'
 import 'babel-polyfill'
 
-import { graphql } from 'graphql'
 import graphqlHTTP from 'express-graphql'
 
 import { schema as RelaySchema } from './graph/relay/schema'
@@ -15,7 +14,7 @@ import logger from 'morgan'
 import UserRoutes from './routes/user.routes'
 import RestaurantRoutes from './routes/restaurant.routes'
 import AdminRoutes from './routes/admin.routes'
-import ProductRoutes from './src/routes/product.routes'
+import ProductRoutes from './routes/product.routes'
 import models from './models'
 
 import { connectionHelper } from './graph/relay/helpers'
