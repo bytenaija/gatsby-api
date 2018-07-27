@@ -39,8 +39,8 @@ var corsOptions = {
   credentials: true
 }
 
-app.use(cors(corsOptions))
-// app.options('*', cors())
+// app.use(cors(corsOptions))
+app.options('*', cors())
 app.use(logger('dev'))
 
 // app.use(function(req, res, next) {
