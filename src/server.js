@@ -40,7 +40,7 @@ var corsOptions = {
 }
 
 // app.use(cors(corsOptions))
-app.options('*', cors())
+app.options(cors())
 app.use(logger('dev'))
 
 // app.use(function(req, res, next) {
