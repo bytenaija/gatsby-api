@@ -1,7 +1,6 @@
 import 'babel-core/register'
 import 'babel-polyfill'
 
-import { graphql } from 'graphql'
 import graphqlHTTP from 'express-graphql'
 
 import { schema as RelaySchema } from './graph/relay/schema'
@@ -15,11 +14,18 @@ import logger from 'morgan'
 import UserRoutes from './routes/user.routes'
 import RestaurantRoutes from './routes/restaurant.routes'
 import AdminRoutes from './routes/admin.routes'
+import ProductRoutes from './routes/product.routes'
 import models from './models'
 
 import { connectionHelper } from './graph/relay/helpers'
 import { formatError } from 'apollo-errors'
+
+import { HTTPS } from 'express-sslify'
+
 const app = express()
+if (app.get('env') !== 'development') {
+  app.use(HTTPS({ trustProtoHeader: true }))
+}
 
 var corsOptions = {
   origin: [
@@ -33,8 +39,8 @@ var corsOptions = {
   credentials: true
 }
 
-app.use(cors(corsOptions))
-// app.options('*', cors())
+// app.use(cors(corsOptions))
+app.options(cors())
 app.use(logger('dev'))
 
 // app.use(function(req, res, next) {
@@ -63,6 +69,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/user', UserRoutes)
 app.use('/admin', AdminRoutes)
 app.use('/restaurant', RestaurantRoutes)
+app.use('/product', ProductRoutes)
 
 app.use('/relay', (req, res, next) => {
   verify.verifyToken(req, res, next)
@@ -116,15 +123,15 @@ app.use(function(req, res, next) {
 })
 
 // error handler
-/* app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    // res.locals.message = err.message;
-    //res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  // res.locals.message = err.message;
+  //res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // render the error page
-    //res.status(err.status || 500);
-    res.json(err);
-}); */
+  // render the error page
+  //res.status(err.status || 500);
+  res.json(err)
+})
 
 var port = process.env.PORT || 8000
 console.log('Port ', port)
