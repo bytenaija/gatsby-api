@@ -22,6 +22,7 @@ import { connectionHelper } from './graph/relay/helpers'
 import { formatError } from 'apollo-errors'
 
 import { HTTPS } from 'express-sslify'
+import path from 'path';
 
 const app = express()
 if (app.get('env') !== 'development') {
@@ -77,6 +78,11 @@ app.use('/relay', (req, res, next) => {
     verify.verifyToken(req, res, next)
 })
 
+app.use(express.static(path.join('..', 'docs')));
+
+app.get('/', function(req, res) {
+    res.sendFile(`${__dirname}/../docs/index.html`)
+})
 app.use('/relay', (req, res, next) => {
     const verification = verify.verify(req, res, next)
 

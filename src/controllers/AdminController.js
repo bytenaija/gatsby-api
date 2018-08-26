@@ -2,6 +2,7 @@ const models = require("../models");
 const Role = models.role;
 const User = models.user;
 const Order = models.order;
+const Restaurant = models.restaurant;
 const verify = require('../jwt/verify');
 const distance = require('./SystemController').calculateDistance;
 

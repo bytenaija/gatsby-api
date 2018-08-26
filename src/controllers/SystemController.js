@@ -4,7 +4,7 @@ var distance = require('google-distance-matrix');
 distance.key('AIzaSyBk2blfsVOf_t1Z5st7DapecOwAHSQTi4U');
 
 exports.calculateDistance = (origins, addresses) => {
-    
+
     /* listAddresses = ''
     for (let address of addresses) {
         listAddresses += address.latitude + ',' + address.longitude + ';'
@@ -27,7 +27,7 @@ exports.calculateDistance = (origins, addresses) => {
 
 
     console.log(destinations);
-    totalDistance = 0;
+    let totalDistance = 0;
 
     distance.matrix(origins, destinations, function(err, distances) {
         if (!err)
