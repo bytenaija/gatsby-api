@@ -10,7 +10,7 @@ exports.create = (req, res, next) => {
         Order.create(req.body).then(order => {
             if (order) {
 
-                res.json({ "success": true, message: "Order successfully created!", orders });
+                res.json({ "success": true, message: "Order successfully created!", order });
 
 
             } else {
@@ -32,7 +32,7 @@ exports.edit = (req, res, next) => {
             .then(order => {
                 if (order) {
 
-                    res.json({ "success": true, message: "Order successfully updated!", orders });
+                    res.json({ "success": true, message: "Order successfully updated!", order });
 
 
                 } else {
