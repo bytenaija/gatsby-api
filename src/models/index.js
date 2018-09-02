@@ -22,7 +22,9 @@ const models = {
     branch: sequelize.import('./branch'),
     reminder: sequelize.import('./reminder'),
     activation: sequelize.import('./activation'),
-    place: sequelize.import('./place')
+    place: sequelize.import('./place'),
+    order: sequelize.import('./order'),
+    orderItem: sequelize.import('./orderItem')
 }
 
 Object.keys(models).forEach(modelName => {

@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     User.associate = (models) => {
         // associations can be defined here
         User.belongsTo(models.role);
+        User.hasMany(models.order);
     };
 
     User.beforeSave(async(user, options) => {
