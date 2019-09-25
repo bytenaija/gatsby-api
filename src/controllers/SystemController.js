@@ -1,7 +1,7 @@
 //const axios = require('axios');
 
 var distance = require('google-distance-matrix');
-distance.key('AIzaSyBk2blfsVOf_t1Z5st7DapecOwAHSQTi4U');
+distance.key();
 
 exports.calculateDistance = (origins, addresses) => {
 
